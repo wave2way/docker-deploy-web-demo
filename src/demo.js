@@ -42,7 +42,7 @@ export default class Demo extends Component {
             }
             e.onProgress({percent: 100})
         })
-    };
+    }
 
     render() {
         return(
