@@ -32,7 +32,7 @@ export default class Demo extends Component {
         formData.append("file", e.file)
         axios.post("/v1/upload", formData, {
             //添加请求头
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
             if(res.status === 200 && res.data.code === 0) {
