@@ -30,7 +30,7 @@ export default class Demo extends Component {
         console.log(e)
         let formData = new FormData()
         formData.append("file", e.file)
-        axios.post("/upload", formData, {
+        axios.post("/v1/upload", formData, {
             //添加请求头
             headers: { "Content-Type": "multipart/form-data" },
         })
