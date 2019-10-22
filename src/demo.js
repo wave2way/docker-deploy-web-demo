@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from "axios"
+import axios from './util/request'
 import { Upload, Button, Icon, Card } from 'antd'
 
 
@@ -15,19 +15,13 @@ export default class Demo extends Component {
     componentDidMount() {
         axios.get("/v1/greeting")
         .then(res => {
-            if(res.status === 200 && res.data.code ===0) {
-                this.setState({
-                    greeting: res.data.data
-                })
-            }
-        })
-        .catch(err => {
-            alert(JSON.stringify(err))
+            this.setState({
+                greeting: res.data
+            })
         })
     }
 
     submit = (e) => {
-        console.log(e)
         let formData = new FormData()
         formData.append("file", e.file)
         axios.post("/v1/upload", formData, {
@@ -35,12 +29,9 @@ export default class Demo extends Component {
             headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-            if(res.status === 200 && res.data.code === 0) {
-                this.setState({
-                    image: res.data.data
-                })
-            }
-            e.onProgress({percent: 100})
+            this.setState({
+                image: res.data
+            })
         })
     }
 
@@ -64,7 +55,7 @@ export default class Demo extends Component {
                             </Upload>        
                     </div>
                     <div style={{display: "flex", justifyContent: "center"}}>
-                        {this.state.image.length > 0 ? <Card><img width={300} height={300} src={this.state.image} alt="image"/></Card> : ""}
+                        {this.state.image.length > 0 ? <Card><img width={300} height={300} src={this.state.image} alt={this.state.image}/></Card> : ""}
                     </div>
                 </Card>
                 
