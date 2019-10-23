@@ -21,7 +21,7 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
     if(error.response && error.response.status === 401) {
         message.info("请登录")
-    } else if (error.response && error.response.status === 500) {
+    } else if (error.response && error.response.status === 400) {
         let data = error.response.data ? error.response.data : null
         message.error(data === null ? "未知错误" : data.message)
     } else {
