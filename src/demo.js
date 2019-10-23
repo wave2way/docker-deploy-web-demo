@@ -37,7 +37,7 @@ export default class Demo extends Component {
 
     render() {
         return(
-            <div>
+            <div style={{paddingTop: "10rem"}}>
                 <div style={{display: "flex", justifyContent: "center", paddingTop: "1rem"}}>
                     <h1>{this.state.greeting.length > 0 ? this.state.greeting : ""}世界</h1>
                 </div>

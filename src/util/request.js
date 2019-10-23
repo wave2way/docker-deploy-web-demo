@@ -12,6 +12,7 @@ axios.interceptors.request.use(function (config) {
 
 // 请求接收之后所做的操作
 axios.interceptors.response.use(function (response) {
+    message.destroy()
     if(response.data && response.data.code > 0) {
         message.info(response.data.message && response.data.message.length > 0 ? response.data.message : "未知错误")
         return Promise.reject()
